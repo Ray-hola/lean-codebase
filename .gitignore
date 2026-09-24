@@ -1,2 +1,7 @@
 __pycache__/
 .refactor-baseline/
+
+# Local artifacts from running the scripts / examples
+before.json
+after.json
+metrics-*.json

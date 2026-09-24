@@ -1,5 +1,10 @@
 # refactor-baseline
 
+[![CI](https://github.com/Ray-hola/refactor-baseline/actions/workflows/ci.yml/badge.svg)](https://github.com/Ray-hola/refactor-baseline/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
+![Zero dependencies](https://img.shields.io/badge/dependencies-stdlib%20only-brightgreen.svg)
+
 An agent skill for **behaviour-preserving codebase cleanup**, for any language and any size. It freezes a baseline first (tests, external interfaces, metrics). It then classifies every finding by whether fixing it preserves behaviour, and makes changes in small steps, each verified against that baseline.
 
 The rule at its centre: **identical duplicates are safe to merge; diverged duplicates are not.** When two copies of one concept have drifted apart, merging them is a product decision, so it is surfaced to a human instead of being shipped as "dedupe".
@@ -17,6 +22,7 @@ The workflow draws on Nous Research's [Refactoring Hermes with 1,393 agents](htt
 | `references/pitfalls.md` | 16 regressions that passed test suites, and how to catch each one |
 | `references/project-types.md` | What to freeze for a library, CLI, service, frontend, data/ML, agent tooling, monorepo or infra project, plus static checks per language |
 | `references/baseline-template.md` | A baseline document to fill in |
+| `tests/` | Stdlib `unittest` suite covering all three scripts (run with `python3 -m unittest discover -s tests -t .`) |
 
 The scripts use only the Python 3.9+ standard library; there are no dependencies. They have been checked on a 26k-line Python project, a 190k-line TypeScript app and a 2.7M-line mixed Python/TypeScript monorepo (about 40 s per script).
 
@@ -37,6 +43,16 @@ python3 scripts/find_duplicates.py /path/to/repo --show-diff
 python3 scripts/snapshot.py record  --commands probes.txt
 python3 scripts/snapshot.py compare --commands probes.txt
 ```
+
+## Tests
+
+The scripts ship with a stdlib-only test suite (no `pytest`, no install). Run it from the repo root:
+
+```bash
+python3 -m unittest discover -s tests -t . -b -v
+```
+
+CI runs the suite on Python 3.9–3.13 and smoke-runs all three scripts on this repo; see [`.github/workflows/ci.yml`](.github/workflows/ci.yml). Contributions welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 
