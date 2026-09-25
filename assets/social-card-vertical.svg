@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="1440" viewBox="0 0 1080 1440" font-family="'SF Mono','Menlo','Consolas',ui-monospace,monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1117"/>
+      <stop offset="1" stop-color="#10151d"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1080" height="1440" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1080" height="8" fill="#58a6ff"/>
+
+  <!-- header -->
+  <text x="64" y="150" font-size="62" font-weight="700" fill="#e6edf3" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">refactor-baseline</text>
+  <text x="66" y="204" font-size="27" fill="#8b949e" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif">行为不变的代码清理 · 任何语言 · 任何规模 · 零依赖</text>
+
+  <!-- hero rule -->
+  <text x="64" y="312" font-size="44" font-weight="700" fill="#3fb950" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif">✅ 相同的重复 → 自动合并</text>
+  <text x="64" y="378" font-size="44" font-weight="700" fill="#d29922" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif">⚠️ 分叉的重复 → 交给人拍板</text>
+
+  <!-- terminal -->
+  <rect x="64" y="430" width="952" height="612" rx="14" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="64" y="430" width="952" height="48" rx="14" fill="#1c2230"/>
+  <rect x="64" y="464" width="952" height="14" fill="#1c2230"/>
+  <circle cx="94" cy="454" r="8" fill="#f85149"/>
+  <circle cx="122" cy="454" r="8" fill="#d29922"/>
+  <circle cx="150" cy="454" r="8" fill="#3fb950"/>
+  <text x="188" y="461" font-size="20" fill="#8b949e">$ find_duplicates.py . --show-diff</text>
+
+  <!-- terminal body -->
+  <text x="96" y="536" font-size="23" fill="#3fb950">== IDENTICAL bodies  (safe)</text>
+  <text x="96" y="582" font-size="23" fill="#e6edf3">   [8×2] calc_order_total ≡ sum_line_items</text>
+
+  <text x="96" y="652" font-size="23" fill="#d29922">== SAME-NAME, different  (read each)</text>
+  <text x="96" y="698" font-size="23" fill="#e6edf3">   partial  sim=0.68  is_active</text>
+  <text x="96" y="740" font-size="23" fill="#e6edf3">   legacy_subs.py  vs  subscriptions.py</text>
+  <text x="96" y="800" font-size="23" fill="#f85149">   - status=='active' and not is_expired()</text>
+  <text x="96" y="842" font-size="23" fill="#3fb950">   + status=='active'</text>
+  <text x="96" y="906" font-size="20" fill="#8b949e" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif">   → 一个排除了过期订阅。合并 = 替调用方改行为。</text>
+  <text x="96" y="948" font-size="20" fill="#8b949e" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif">   → 不算"去重",拎出来让人决定。</text>
+
+  <!-- closing -->
+  <text x="64" y="1120" font-size="34" font-weight="700" fill="#e6edf3" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif">行为是不可变量,指标只用来排优先级。</text>
+  <text x="66" y="1172" font-size="26" fill="#8b949e" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif">先冻结测试 + 接口(逐字节),每一步都对照基线验证。</text>
+
+  <!-- footer -->
+  <rect x="64" y="1272" width="952" height="2" fill="#30363d"/>
+  <text x="64" y="1338" font-size="27" fill="#e6edf3" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif">⭐ 开源免费 · MIT · 纯标准库 Python</text>
+  <text x="64" y="1384" font-size="26" fill="#58a6ff" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">github.com/Ray-hola/refactor-baseline</text>
+</svg>

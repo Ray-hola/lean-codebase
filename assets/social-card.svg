@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" font-family="'SF Mono','Menlo','Consolas',ui-monospace,monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d1117"/>
+      <stop offset="1" stop-color="#10151d"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="680" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="6" fill="#58a6ff"/>
+
+  <!-- header -->
+  <text x="56" y="84" font-size="50" font-weight="700" fill="#e6edf3" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">refactor-baseline</text>
+  <text x="58" y="122" font-size="22" fill="#8b949e" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">Behaviour-preserving codebase cleanup — any language, any size, zero deps.</text>
+
+  <!-- terminal -->
+  <rect x="56" y="158" width="1088" height="378" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1.5"/>
+  <rect x="56" y="158" width="1088" height="44" rx="12" fill="#1c2230"/>
+  <rect x="56" y="190" width="1088" height="12" fill="#1c2230"/>
+  <circle cx="82" cy="180" r="7" fill="#f85149"/>
+  <circle cx="106" cy="180" r="7" fill="#d29922"/>
+  <circle cx="130" cy="180" r="7" fill="#3fb950"/>
+  <text x="164" y="186" font-size="18" fill="#8b949e">$ find_duplicates.py . --show-diff</text>
+
+  <!-- terminal body -->
+  <text x="88" y="250" font-size="21" fill="#3fb950">== IDENTICAL bodies  (safe to merge)</text>
+  <text x="88" y="288" font-size="21" fill="#e6edf3">   [8 lines ×2]  calc_order_total  ≡  sum_line_items</text>
+
+  <text x="88" y="340" font-size="21" fill="#d29922">== SAME-NAME, different bodies  (read each)</text>
+  <text x="88" y="378" font-size="21" fill="#e6edf3">   partial  sim=0.68  is_active   legacy_subs.py vs subscriptions.py</text>
+  <text x="88" y="416" font-size="21" fill="#f85149">   - return s.status=='active' and not s.is_expired()</text>
+  <text x="88" y="452" font-size="21" fill="#3fb950">   + return s.status=='active'</text>
+  <text x="88" y="500" font-size="18" fill="#8b949e">   → one excludes expired subs. Merging picks a winner → a decision.</text>
+
+  <!-- core rule band -->
+  <text x="56" y="600" font-size="27" font-weight="700" fill="#e6edf3" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">Identical duplicates <tspan fill="#3fb950">→ merge.</tspan>   Diverged duplicates <tspan fill="#d29922">→ a human decides.</tspan></text>
+  <text x="58" y="642" font-size="20" fill="#58a6ff" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">github.com/Ray-hola/refactor-baseline</text>
+  <text x="1144" y="642" text-anchor="end" font-size="18" fill="#8b949e" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">freeze · classify · verify every step</text>
+</svg>
