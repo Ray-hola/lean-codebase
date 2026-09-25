@@ -13,6 +13,27 @@ The workflow draws on Nous Research's [Refactoring Hermes with 1,393 agents](htt
 
 > **See it run:** [examples/README.md](examples/README.md) walks all three scripts over a small synthetic project in about 30 seconds — including the identical-vs-diverged call that is the whole point.
 
+## Why this approach
+
+Most cleanup tools optimise a number — lines removed, duplicates merged — and let behaviour take care of itself. This one inverts that: **behaviour is the invariant, and the metrics only rank the work.**
+
+The philosophy, in three moves:
+
+- **Freeze before you touch.** Record the test results, the externally visible interfaces (byte for byte) and the metrics first. That frozen baseline — not your memory of how things worked — is what every later step is judged against.
+- **Classify by consequence, not by looks.** Two functions can be byte-identical and safe to merge, or merely look similar while hiding a real behaviour difference. The scripts surface *leads*; a verdict comes only after reading the code. Anything that would change what a caller observes is a **decision**, routed to a human — never shipped as "dedupe".
+- **Change in small, verified, committed steps.** One coherent change at a time, each re-checked against the baseline (static check → tests → snapshot → an A/B probe for untested paths) and committed with the evidence. No step claims "behaviour unchanged" without test, snapshot or A/B proof.
+
+What you get from it:
+
+| Advantage | Why it holds |
+|---|---|
+| **Regressions can't slip in silently** | Every step is diffed against a frozen tests + interface baseline; any drift stops the run. |
+| **Fast wins without the risky ones** | Mechanical fixes (identical merges, dispatch tables, cycle breaks) proceed automatically; consequential ones are pulled out for a human. That split is the whole point. |
+| **Works anywhere** | One workflow for any language and any size — a single package up to a 2.7M-line monorepo — because it keys off observable behaviour, not a specific toolchain. |
+| **Drops in with zero setup** | stdlib-only Python, no dependencies, no install — runs locally, in CI, or across parallel agents in separate worktrees. |
+| **Catches mistakes that pass tests** | A checklist of [16 real regressions](references/pitfalls.md) (shadowed imports, diverged merges, vacuous A/B runs, dispatch-order changes…) that green suites miss. |
+| **Honest by construction** | The report leads with verification evidence and ends with the decisions a human still owns — no "trust me, it's fine". |
+
 ## What's inside
 
 | Path | Purpose |
@@ -57,6 +78,16 @@ python3 -m unittest discover -s tests -t . -b -v
 
 CI runs the suite on Python 3.9–3.13 and smoke-runs all three scripts on this repo; see [`.github/workflows/ci.yml`](.github/workflows/ci.yml). Contributions welcome — see [CONTRIBUTING.md](CONTRIBUTING.md).
 
+## Credits & source
+
+The workflow builds on Nous Research's write-up of a large-scale agent refactor:
+
+- **Refactoring Hermes with 1,393 agents** — Nous Research (Teknium): <https://nousresearch.com/refactoring-hermes-with-1393-agents>
+
+From it comes the spine of the method: a frozen baseline, byte-for-byte interface checks, and a commit after every verified step. This project adds the **identical-vs-diverged** classification, **batching by who must decide**, and the **[16-regression checklist](references/pitfalls.md)**.
+
+Project home: <https://github.com/Ray-hola/refactor-baseline>
+
 ---
 
 ## 中文说明
@@ -70,6 +101,32 @@ CI runs the suite on Python 3.9–3.13 and smoke-runs all three scripts on this 
 - `references/`：常见回归清单、按项目类型列出的应冻结接口、基线文档模板。
 
 安装：把本目录复制到所用 Agent 的 skills 目录，例如 `~/.claude/skills/refactor-baseline`。
+
+### 重构理念
+
+多数清理工具优化的是"数字"——删了多少行、合并了多少重复——却把行为交给运气。本项目反过来：**行为是不可变量，度量只用来给工作排优先级。**
+
+- **先冻结，再动手。** 先记录测试结果、对外接口（逐字节）和度量,以此作为之后每一步的对照基准——而不是凭记忆判断"本来是怎样"。
+- **按后果分类，而不是按长相。** 两个函数可能逐字相同、可以安全合并，也可能只是看着相似却藏着真实的行为差异。脚本只给*线索*，读完代码才下结论。任何会改变调用方可见行为的改动都是**决策**，交给人，绝不当"去重"顺手做掉。
+- **小步改、每步验证、每步提交。** 一次一个改动，每步都对照冻结基线复查（静态检查 → 测试 → 快照 → 无测试路径补 A/B 探针），并带着证据提交。没有测试/快照/A-B 证据，就不声称"行为不变"。
+
+### 优势
+
+- **回归无法悄悄溜进来**：每步都与冻结的测试 + 接口基线做 diff，一有偏差就停。
+- **快，但不冒险**：机械改动（相同合并、dispatch 表、拆环）自动做；有后果的单独拎出来交给人——这个区分正是核心价值。
+- **到处能用**：一套流程适配任意语言、任意规模（从单个包到 270 万行 monorepo），因为它盯的是可观察行为，不绑定具体工具链。
+- **零配置即插即用**：纯标准库 Python，无依赖、免安装，本地 / CI / 多 Agent 并行 worktree 都能跑。
+- **抓住能骗过测试的错误**：一份 [16 条真实回归清单](references/pitfalls.md)（遮蔽导入、分叉合并、无效 A/B、dispatch 顺序变化……），都是绿色测试套件会漏掉的。
+
+### 来源
+
+方法论借鉴自 Nous Research 关于大规模 Agent 重构的文章：
+
+- **Refactoring Hermes with 1,393 agents** — Nous Research（Teknium）：<https://nousresearch.com/refactoring-hermes-with-1393-agents>
+
+本项目在其"冻结基线、逐字节接口校验、每步验证后提交"的骨架上，补充了**相同 vs 分叉**的分类、**按决策归属分批**，以及 **16 条回归清单**。
+
+项目主页：<https://github.com/Ray-hola/refactor-baseline>
 
 ## License
 

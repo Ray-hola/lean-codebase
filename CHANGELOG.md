@@ -14,6 +14,9 @@ to follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `CONTRIBUTING.md`, issue and pull-request templates, and README badges.
 - `examples/`: a worked run of all three scripts on a synthetic toy project,
   with real captured output.
+- README: a "Why this approach" section (philosophy + advantages) and a
+  "Credits & source" section citing the Nous Research article, in English and
+  Chinese.
 
 ## [0.1.0] - 2026-09-25
 
