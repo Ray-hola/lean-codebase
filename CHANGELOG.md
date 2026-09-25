@@ -7,6 +7,11 @@ to follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [Unreleased]
 
 ### Added
+- `SKILL.md` Phase 0.5 "Kickoff contract": an upfront, one-question-at-a-time
+  interview (adapted from the `grill-me` skill) that fixes the operating
+  contract — scope, public-API policy, Batch 0 autonomy, discovered-decision
+  handling, red lines, reporting — so execution then runs unattended within it.
+  Recorded in a new §0 of `references/baseline-template.md`.
 - Stdlib `unittest` test suite (`tests/`) covering `measure.py`,
   `find_duplicates.py` and `snapshot.py`.
 - GitHub Actions CI running the suite on Python 3.9–3.13 and smoke-running the

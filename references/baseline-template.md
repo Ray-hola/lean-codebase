@@ -6,6 +6,19 @@ This document is a frozen snapshot taken before cleanup: metrics, findings, comp
 - Work branch: `<branch>`
 - Project rules that constrain the cleanup: <e.g. "no big-bang refactor", public API policy>
 
+## 0. Kickoff contract
+
+Agreed with <who> on <date>, before any change. This is the mandate for autonomous execution; anything outside it comes back to the human.
+
+| Dimension | Agreed |
+|---|---|
+| Scope (in / off-limits) | |
+| Public-API policy | |
+| Batch 0 autonomy | |
+| Discovered decisions (stop / queue) | |
+| Red lines | |
+| Reporting | |
+
 ## 1. Baseline metrics
 
 | Metric | Baseline | Latest |

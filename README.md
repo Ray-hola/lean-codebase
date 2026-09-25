@@ -38,7 +38,7 @@ What you get from it:
 
 | Path | Purpose |
 |---|---|
-| `SKILL.md` | The workflow: orient → freeze → find → batch → execute and verify → report |
+| `SKILL.md` | The workflow: orient → kickoff contract → freeze → find → batch → execute and verify → report |
 | `scripts/measure.py` | LOC by language, size tier, big files, long functions, routing chains, CRLF/BOM hygiene. For Python: private cross-module imports, function-level imports, import cycles. Skips generated and minified files. |
 | `scripts/find_duplicates.py` | Python: IDENTICAL bodies (after renaming parameters and locals) and SAME-NAME pairs with diffs. All languages: cloned blocks. |
 | `scripts/snapshot.py` | Records command outputs (stdout, stderr, exit code) and compares them byte for byte, with masks for volatile text |
@@ -86,6 +86,8 @@ The workflow builds on Nous Research's write-up of a large-scale agent refactor:
 
 From it comes the spine of the method: a frozen baseline, byte-for-byte interface checks, and a commit after every verified step. This project adds the **identical-vs-diverged** classification, **batching by who must decide**, and the **[16-regression checklist](references/pitfalls.md)**.
 
+The upfront **kickoff contract** (Phase 0.5) — interview the human once to fix the operating rules, then run unattended — adapts the one-question-at-a-time interview pattern from the [grill-me](https://github.com/satya-janghu/agent-skills) skill.
+
 Project home: <https://github.com/Ray-hola/refactor-baseline>
 
 ---
@@ -96,7 +98,7 @@ Project home: <https://github.com/Ray-hola/refactor-baseline>
 
 核心规则：**逐字相同的重复可以放心合并；已经分叉的重复不能直接合并。** 同一概念的两份副本如果已经不一致，合并就等于替部分调用方改变了行为。这属于产品决策，必须交给人来拍板，不能当作"去重"顺手做掉。
 
-- `SKILL.md`：完整流程。先摸清项目规则，然后冻结基线、找问题、分批（机械改动 / 需人决策 / 结构拆分）、逐步执行并验证，最后汇报。
+- `SKILL.md`：完整流程。先摸清项目规则，开工前先用一轮"启动契约"（Phase 0.5）与人确定作业规则（范围、自主权、红线），随后冻结基线、找问题、分批（机械改动 / 需人决策 / 结构拆分）、逐步执行并验证，最后汇报。
 - `scripts/`：三个只依赖标准库的脚本，分别做度量、重复检测（区分相同与分叉）、接口快照比对。
 - `references/`：常见回归清单、按项目类型列出的应冻结接口、基线文档模板。
 
@@ -125,6 +127,8 @@ Project home: <https://github.com/Ray-hola/refactor-baseline>
 - **Refactoring Hermes with 1,393 agents** — Nous Research（Teknium）：<https://nousresearch.com/refactoring-hermes-with-1393-agents>
 
 本项目在其"冻结基线、逐字节接口校验、每步验证后提交"的骨架上，补充了**相同 vs 分叉**的分类、**按决策归属分批**，以及 **16 条回归清单**。
+
+开工前的**启动契约**（Phase 0.5）——先用"一次一个问题、每题附推荐答案"的方式与人敲定作业规则，之后无人值守地执行——借鉴自 [grill-me](https://github.com/satya-janghu/agent-skills) skill 的访谈模式。
 
 项目主页：<https://github.com/Ray-hola/refactor-baseline>
 

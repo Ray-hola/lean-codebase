@@ -13,6 +13,8 @@ Cleanup goes wrong in two ways. Either behaviour changes without anyone noticing
 2. **Classify** every finding by whether fixing it preserves behaviour.
 3. **Change** in small, verified, committed steps, each checked against the frozen baseline.
 
+Before all three, a short **kickoff** (Phase 0.5) settles the operating contract with the human once — scope, autonomy, red lines — so the rest of the run can proceed unattended instead of stopping for permission at every step.
+
 **Core rule: identical duplicates are safe to merge; diverged duplicates are not.** When two copies of one concept have drifted apart, merging them picks a winner and silently changes behaviour for the callers of the loser. That is a product decision, so present it to the human; never ship it as cleanup.
 
 Don't use this skill for feature work or a single bug fix.
@@ -33,6 +35,27 @@ Numbers from brace languages (JS/TS/Go/Java/…) are marked `approx`; use them t
 - Check `git status`. Never touch untracked or modified files that belong to the user.
 - Work on a new branch. For parallel workers (large repos), give each one its own `git worktree`.
 - Keep baseline artifacts under `.refactor-baseline/` in the repo or in a temp dir, and don't commit them unless asked. Before comparing, check that the directory holds only this run's files, because stale snapshots from earlier runs cause false diffs.
+
+## Phase 0.5: Kickoff contract
+
+Move every judgement call the human owns to the *front*, so the run itself can proceed unattended. Interview the human once, agree the rules, write them down, then execute against them without asking permission at every step. (The interview mechanics — one question at a time, each with a recommended answer to react to — are adapted from the [grill-me](https://github.com/satya-janghu/agent-skills) skill.)
+
+- **Investigate before asking.** Anything the repo answers — the public-API surface, protected dirs in `CLAUDE.md`/`CONTRIBUTING`, the test command, `git status` — you already read in Phase 0. Don't ask it.
+- **One question at a time, with a recommended default.** Give the human something to react to, not a blank form. Most will take the defaults; the questions exist to catch the cases where they wouldn't.
+- **Decide rules, not findings.** This phase fixes *how* you work. It does **not** decide the diverged-duplicate verdicts — those don't exist yet; they surface in Phase 2 and are handled per the "discovered decisions" rule below. Don't let kickoff swell into a spec-everything waterfall.
+
+Agree on and record in §0 of the baseline doc:
+
+| Dimension | What to settle | Default |
+|---|---|---|
+| **Scope** | Directories/packages in scope; off-limits ones (vendored, generated, someone else's active work). | Whole repo minus generated/vendored. |
+| **Public-API policy** | What counts as public (exported names, anything with external callers, plugin/registry entries), and whether renaming or removing a public name is ever on the table. | Nothing public changes without a decision. |
+| **Batch 0 autonomy** | May the agent land mechanical changes (merge IDENTICAL copies, dispatch tables, cycle breaks, proven-dead private code) unattended, or does each need review? | Land unattended; commit per step. |
+| **Discovered decisions** | When Phase 2 turns up a diverged duplicate or divergent entry point: stop and ask now, or queue it to Batch 1 and keep going? | Queue and continue; present all at the end. |
+| **Red lines** | Max LOC per commit, files never to touch, "no big-bang" / one-file-per-step rules. | One coherent change per commit; no file-count-shrinking big bangs. |
+| **Reporting** | Where and how often the human reviews. | Final report plus the Batch 1 decision list. |
+
+The filled-in §0 is the mandate: within it the agent runs Phases 1–4 on its own, and comes back to the human only to step outside it or when it hits a red line.
 
 ## Phase 1: Freeze the baseline
 
@@ -76,7 +99,7 @@ For each step:
 7. Commit, stating in the message that behaviour is preserved and how you verified it.
 8. Update the "done" table in the baseline doc.
 
-**Stop and ask** when: a test fails and it isn't pre-existing and the fix isn't obvious; a snapshot changes; or a "mechanical" step turns out to require choosing between behaviours.
+**Stop and ask** when a test fails that isn't pre-existing and the fix isn't obvious, or a snapshot changes unexpectedly, or a step would cross a kickoff-contract red line. When a "mechanical" step turns out to need a behaviour choice, handle it per the contract's discovered-decisions rule: stop now, or reclassify it into batch 1 and continue.
 
 The full list of regressions the checks above catch is in `references/pitfalls.md`. Read it before a large run.
 
