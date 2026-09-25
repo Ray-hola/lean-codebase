@@ -1,12 +1,12 @@
-# refactor-baseline
+# lean-codebase
 
-[![CI](https://github.com/Ray-hola/refactor-baseline/actions/workflows/ci.yml/badge.svg)](https://github.com/Ray-hola/refactor-baseline/actions/workflows/ci.yml)
+[![CI](https://github.com/Ray-hola/lean-codebase/actions/workflows/ci.yml/badge.svg)](https://github.com/Ray-hola/lean-codebase/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.9+](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
 ![Zero dependencies](https://img.shields.io/badge/dependencies-stdlib%20only-brightgreen.svg)
 
 <p align="center">
-  <img src="assets/lean-codebase.png" alt="refactor-baseline — identical duplicates merge automatically; diverged duplicates go to a human" width="840">
+  <img src="assets/lean-codebase.png" alt="lean-codebase — identical duplicates merge automatically; diverged duplicates go to a human" width="840">
 </p>
 
 An agent skill for **behaviour-preserving codebase cleanup**, for any language and any size. It freezes a baseline first (tests, external interfaces, metrics). It then classifies every finding by whether fixing it preserves behaviour, and makes changes in small steps, each verified against that baseline.
@@ -59,7 +59,7 @@ The scripts use only the Python 3.9+ standard library; there are no dependencies
 Copy or clone the folder into your agent's skills directory:
 
 ```bash
-git clone git@github.com:Ray-hola/refactor-baseline.git ~/.claude/skills/refactor-baseline   # Claude Code
+git clone git@github.com:Ray-hola/lean-codebase.git ~/.claude/skills/lean-codebase   # Claude Code
 # other runtimes: ~/.agents/skills/, ~/.codex/skills/, ~/.cursor/skills/, ...
 ```
 
@@ -92,7 +92,7 @@ From it comes the spine of the method: a frozen baseline, byte-for-byte interfac
 
 The upfront **kickoff contract** (Phase 0.5) — interview the human once to fix the operating rules, then run unattended — adapts the one-question-at-a-time interview pattern from the [grill-me](https://github.com/satya-janghu/agent-skills) skill.
 
-Project home: <https://github.com/Ray-hola/refactor-baseline>
+Project home: <https://github.com/Ray-hola/lean-codebase>
 
 ---
 
@@ -106,7 +106,7 @@ Project home: <https://github.com/Ray-hola/refactor-baseline>
 - `scripts/`：三个只依赖标准库的脚本，分别做度量、重复检测（区分相同与分叉）、接口快照比对。
 - `references/`：常见回归清单、按项目类型列出的应冻结接口、基线文档模板。
 
-安装：把本目录复制到所用 Agent 的 skills 目录，例如 `~/.claude/skills/refactor-baseline`。
+安装：把本目录复制到所用 Agent 的 skills 目录，例如 `~/.claude/skills/lean-codebase`。
 
 ### 重构理念
 
@@ -134,7 +134,7 @@ Project home: <https://github.com/Ray-hola/refactor-baseline>
 
 开工前的**启动契约**（Phase 0.5）——先用"一次一个问题、每题附推荐答案"的方式与人敲定作业规则，之后无人值守地执行——借鉴自 [grill-me](https://github.com/satya-janghu/agent-skills) skill 的访谈模式。
 
-项目主页：<https://github.com/Ray-hola/refactor-baseline>
+项目主页：<https://github.com/Ray-hola/lean-codebase>
 
 ## License
 

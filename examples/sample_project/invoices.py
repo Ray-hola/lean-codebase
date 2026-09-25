@@ -1,4 +1,4 @@
-"""Invoice totals. Toy code for the refactor-baseline demo — not real software."""
+"""Invoice totals. Toy code for the lean-codebase demo — not real software."""
 
 
 def sum_line_items(lines):

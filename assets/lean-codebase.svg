@@ -10,7 +10,7 @@
   <rect x="0" y="0" width="1200" height="6" fill="#58a6ff"/>
 
   <!-- header -->
-  <text x="56" y="84" font-size="50" font-weight="700" fill="#e6edf3" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">refactor-baseline</text>
+  <text x="56" y="84" font-size="50" font-weight="700" fill="#e6edf3" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">lean-codebase</text>
   <text x="58" y="122" font-size="22" fill="#8b949e" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">Behaviour-preserving codebase cleanup — any language, any size, zero deps.</text>
 
   <!-- terminal -->
@@ -34,6 +34,6 @@
 
   <!-- core rule band -->
   <text x="56" y="600" font-size="27" font-weight="700" fill="#e6edf3" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">Identical duplicates <tspan fill="#3fb950">→ merge.</tspan>   Diverged duplicates <tspan fill="#d29922">→ a human decides.</tspan></text>
-  <text x="58" y="642" font-size="20" fill="#58a6ff" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">github.com/Ray-hola/refactor-baseline</text>
+  <text x="58" y="642" font-size="20" fill="#58a6ff" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">github.com/Ray-hola/lean-codebase</text>
   <text x="1144" y="642" text-anchor="end" font-size="18" fill="#8b949e" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">freeze · classify · verify every step</text>
 </svg>

@@ -10,7 +10,7 @@
   <rect x="0" y="0" width="1080" height="8" fill="#58a6ff"/>
 
   <!-- header -->
-  <text x="64" y="150" font-size="62" font-weight="700" fill="#e6edf3" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">refactor-baseline</text>
+  <text x="64" y="150" font-size="62" font-weight="700" fill="#e6edf3" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">lean-codebase</text>
   <text x="66" y="204" font-size="27" fill="#8b949e" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif">行为不变的代码清理 · 任何语言 · 任何规模 · 零依赖</text>
 
   <!-- hero rule -->
@@ -45,5 +45,5 @@
   <!-- footer -->
   <rect x="64" y="1272" width="952" height="2" fill="#30363d"/>
   <text x="64" y="1338" font-size="27" fill="#e6edf3" font-family="'PingFang SC','Hiragino Sans GB','Microsoft YaHei',sans-serif">⭐ 开源免费 · MIT · 纯标准库 Python</text>
-  <text x="64" y="1384" font-size="26" fill="#58a6ff" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">github.com/Ray-hola/refactor-baseline</text>
+  <text x="64" y="1384" font-size="26" fill="#58a6ff" font-family="'SF Pro Display',Helvetica,Arial,sans-serif">github.com/Ray-hola/lean-codebase</text>
 </svg>

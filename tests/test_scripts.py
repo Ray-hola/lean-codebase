@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Tests for the refactor-baseline scripts. Stdlib unittest only, no deps.
+"""Tests for the lean-codebase scripts. Stdlib unittest only, no deps.
 
 Run from the repo root:
 

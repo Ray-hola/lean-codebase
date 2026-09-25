@@ -23,6 +23,12 @@ to follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   "Credits & source" section citing the Nous Research article, in English and
   Chinese.
 
+### Changed
+- Renamed the skill and repository from `refactor-baseline` to `lean-codebase`,
+  to lead with the purpose (a leaner codebase) rather than the mechanism. The
+  `.refactor-baseline/` artifact directory (snapshot/metrics output) keeps its
+  name. GitHub redirects the old repository URL to the new one.
+
 ## [0.1.0] - 2026-09-25
 
 ### Added
@@ -36,5 +42,5 @@ to follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - `scripts/snapshot.py`: byte-for-byte interface snapshots with masking.
 - References: `pitfalls.md`, `project-types.md`, `baseline-template.md`.
 
-[Unreleased]: https://github.com/Ray-hola/refactor-baseline/compare/v0.1.0...HEAD
-[0.1.0]: https://github.com/Ray-hola/refactor-baseline/releases/tag/v0.1.0
+[Unreleased]: https://github.com/Ray-hola/lean-codebase/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/Ray-hola/lean-codebase/releases/tag/v0.1.0

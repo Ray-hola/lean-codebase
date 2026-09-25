@@ -1,4 +1,4 @@
-# Contributing to refactor-baseline
+# Contributing to lean-codebase
 
 Thanks for your interest in improving this skill. It stays deliberately small and dependency-free, so a few conventions keep it that way.
 

@@ -1,4 +1,4 @@
-"""Order pricing. Toy code for the refactor-baseline demo — not real software."""
+"""Order pricing. Toy code for the lean-codebase demo — not real software."""
 
 
 def calc_order_total(items):

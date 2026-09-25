@@ -1,9 +1,9 @@
 ---
-name: refactor-baseline
+name: lean-codebase
 description: Use when asked to clean up, simplify, deduplicate or refactor a codebase, audit it for duplicated or tangled logic, shrink god files or long functions, or set a baseline before code optimization. Applies to any language and any size, from a single package to a large monorepo.
 ---
 
-# Refactor Baseline
+# Lean Codebase
 
 ## Overview
 
