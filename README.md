@@ -6,7 +6,7 @@
 ![Zero dependencies](https://img.shields.io/badge/dependencies-stdlib%20only-brightgreen.svg)
 
 <p align="center">
-  <img src="assets/social-card.png" alt="refactor-baseline — identical duplicates merge automatically; diverged duplicates go to a human" width="840">
+  <img src="assets/lean-codebase.png" alt="refactor-baseline — identical duplicates merge automatically; diverged duplicates go to a human" width="840">
 </p>
 
 An agent skill for **behaviour-preserving codebase cleanup**, for any language and any size. It freezes a baseline first (tests, external interfaces, metrics). It then classifies every finding by whether fixing it preserves behaviour, and makes changes in small steps, each verified against that baseline.
