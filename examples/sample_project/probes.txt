@@ -1,0 +1,3 @@
+public_api_subscriptions	python3 -c "import subscriptions as s, json; print(json.dumps(sorted(n for n in dir(s) if not n.startswith('_'))))"
+golden_is_active	python3 -c "import subscriptions as s; from types import SimpleNamespace as N; print(s.is_active(N(status='active')), s.is_active(N(status='paused')))"
+golden_order_total	python3 -c "import orders as o; from types import SimpleNamespace as N; items=[N(unit_price=10,quantity=2,taxable=True), N(unit_price=5,quantity=1,taxable=False)]; print(o.calc_order_total(items))"

@@ -11,6 +11,8 @@ The rule at its centre: **identical duplicates are safe to merge; diverged dupli
 
 The workflow draws on Nous Research's [Refactoring Hermes with 1,393 agents](https://nousresearch.com/refactoring-hermes-with-1393-agents) (frozen baseline, byte-for-byte interface checks, commit after every verified step). It adds the identical-vs-diverged split, batching by who must decide, and a list of regressions to catch.
 
+> **See it run:** [examples/README.md](examples/README.md) walks all three scripts over a small synthetic project in about 30 seconds — including the identical-vs-diverged call that is the whole point.
+
 ## What's inside
 
 | Path | Purpose |
@@ -23,6 +25,7 @@ The workflow draws on Nous Research's [Refactoring Hermes with 1,393 agents](htt
 | `references/project-types.md` | What to freeze for a library, CLI, service, frontend, data/ML, agent tooling, monorepo or infra project, plus static checks per language |
 | `references/baseline-template.md` | A baseline document to fill in |
 | `tests/` | Stdlib `unittest` suite covering all three scripts (run with `python3 -m unittest discover -s tests -t .`) |
+| `examples/` | A 30-second worked run on a synthetic toy project — see [examples/README.md](examples/README.md) |
 
 The scripts use only the Python 3.9+ standard library; there are no dependencies. They have been checked on a 26k-line Python project, a 190k-line TypeScript app and a 2.7M-line mixed Python/TypeScript monorepo (about 40 s per script).
 

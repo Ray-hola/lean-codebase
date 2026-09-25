@@ -12,6 +12,8 @@ to follow [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - GitHub Actions CI running the suite on Python 3.9–3.13 and smoke-running the
   scripts on this repo.
 - `CONTRIBUTING.md`, issue and pull-request templates, and README badges.
+- `examples/`: a worked run of all three scripts on a synthetic toy project,
+  with real captured output.
 
 ## [0.1.0] - 2026-09-25
 
